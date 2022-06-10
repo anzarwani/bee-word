@@ -21,15 +21,17 @@ def check_word():
         with col3:
             st.write(' ')
 
-        if (d.check(word) and word not in st.session_state.found):
+        if (d.check(word) and word not in st.session_state.found and word.isalpha()):
             st.session_state.found.append(word)
             st.session_state.count += 1
             st.write(":smile:" + "GREAT")
+        elif (not word.isalpha()):
+            st.warning("NUMBERS NOT ALLOWED")
         elif quit:
             st.balloons()
             st.write("**YOUR FINAL SCORE WAS : **", st.session_state.count)
 
-        elif (d.check(word) and word in st.session_state.found):
+        elif (d.check(word) and word in st.session_state.found and word.isalpha()):
             st.warning("ALREADY FOUND")
         else:
             st.write("Try again")
